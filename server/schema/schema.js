@@ -1,6 +1,11 @@
-import { projects, clients } from "../sampleData";
+import { projects, clients } from "../sampleData.js";
 
-import { GraphQLID, GraphQLObjectType, GraphQLString } from "graphql";
+import {
+  GraphQLID,
+  GraphQLObjectType,
+  GraphQLSchema,
+  GraphQLString,
+} from "graphql";
 
 // client type
 
@@ -26,3 +31,7 @@ const RootQuery = new GraphQLObjectType({
     },
   },
 });
+const schema = new GraphQLSchema({
+  query: RootQuery,
+});
+export default schema;
