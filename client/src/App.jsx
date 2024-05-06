@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { ApolloProvider, ApolloClient, InMemoryCache } from "@apollo/client";
 import Header from "./components/Header";
+import Clients from "./components/Clients";
 function App() {
   const client = new ApolloClient({
-    uri: "http://localhost:5000/grapgql",
+    uri: "http://localhost:5000/graphql",
     cache: new InMemoryCache(),
   });
   return (
@@ -11,7 +12,7 @@ function App() {
       <ApolloProvider client={client}>
         <Header />
         <div className="container">
-          <h1>Maleek</h1>
+          <Clients />
         </div>
       </ApolloProvider>
     </>

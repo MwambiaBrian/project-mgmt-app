@@ -1,4 +1,3 @@
-import React from "react";
 import logo from "./assets/logo.jpeg";
 function Header() {
   return (
@@ -7,7 +6,7 @@ function Header() {
         <a className="navbar-brand" href="">
           <div className="d-flex">
             <img src={logo} alt="logo" className="mr-2" />
-            <div>Maleek</div>
+            <div>Maleek Prjct</div>
           </div>
         </a>
       </div>
