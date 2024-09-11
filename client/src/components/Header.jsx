@@ -1,4 +1,4 @@
-import logo from "./assets/logo.jpeg";
+import logo from "../assets/logo.jpeg";
 function Header() {
   return (
     <nav className="navbar bg-light mb-4 p-0">
@@ -6,7 +6,7 @@ function Header() {
         <a className="navbar-brand" href="">
           <div className="d-flex">
             <img src={logo} alt="logo" className="mr-2" />
-            <div>Maleek Prjct</div>
+            <div>Malik's Agency</div>
           </div>
         </a>
       </div>
