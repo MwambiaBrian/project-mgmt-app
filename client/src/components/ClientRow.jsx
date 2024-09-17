@@ -6,16 +6,16 @@ export default function ClientRow({ client }) {
   console.log(client.id);
   const [deleteClient] = useMutation(DELETE_CLIENT, {
     variables: { id: client.id },
-    // refetchQueries: [{query: GET_CLIENTS}]
-    update(cache, { data: { deleteClient: deletedClient } }) {
-      const { clients } = cache.readQuery({ query: GET_CLIENTS });
-      cache.writeQuery({
-        query: GET_CLIENTS,
-        data: {
-          clients: clients.filter((client) => client.id !== deletedClient.id),
-        },
-      });
-    },
+    refetchQueries: [{ query: GET_CLIENTS }, { query: GET_PROJECTS }],
+    // update(cache, { data: { deleteClient: deletedClient } }) {
+    //   const { clients } = cache.readQuery({ query: GET_CLIENTS });
+    //   cache.writeQuery({
+    //     query: GET_CLIENTS,
+    //     data: {
+    //       clients: clients.filter((client) => client.id !== deletedClient.id),
+    //     },
+    //   });
+    // },
   });
   return (
     <tr>

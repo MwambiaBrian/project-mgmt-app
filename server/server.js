@@ -12,11 +12,12 @@ connectDB();
 const port = process.env.PORT || 5000;
 const app = express();
 app.use(cors());
+//GraphQL endpoint
 app.use(
   "/graphql",
   graphqlHTTP({
     schema,
-    graphiql: process.env.NODE_ENV === "development",
+    graphiql: process.env.NODE_ENV === "development", // Enables the GraphiQL GUI
   })
 );
 app.listen(port, () => {

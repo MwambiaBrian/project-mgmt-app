@@ -89,16 +89,18 @@ const mutation = new GraphQLObjectType({
           email: args.email,
           phone: args.phone,
         });
-        return client;
+        return client.save();
       },
     },
-
     deleteClient: {
       type: ClientType,
       args: {
-        id: { type: GraphQLNonNull(GraphQLString) },
+        id: { type: GraphQLNonNull(GraphQLID) },
       },
       resolve(parent, args) {
+        Project.find({ clientId: args.id }).then((projects) => {
+          projects.forEach((project) => project.remove());
+        });
         return Client.findByIdAndDelete(args.id);
       },
     },
@@ -118,7 +120,7 @@ const mutation = new GraphQLObjectType({
           }),
           defaultValue: "Not Started",
         },
-        clientId: { type: GraphQLNonNull(GraphQLString) },
+        clientId: { type: GraphQLNonNull(GraphQLID) },
       },
       resolve(parent, args) {
         const project = new Project({
@@ -135,8 +137,8 @@ const mutation = new GraphQLObjectType({
       type: ProjectType,
       args: {
         id: { type: GraphQLNonNull(GraphQLID) },
-        name: { type: GraphQLID },
-        description: { type: GraphQLID },
+        name: { type: GraphQLString },
+        description: { type: GraphQLString },
         status: {
           type: new GraphQLEnumType({
             name: "ProjectStatusUpdate",
